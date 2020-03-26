@@ -20,6 +20,7 @@
                     <input type="text" id="filter-input" placeholder="Search for your items..">
                     <i class="fas fa-search"></i>
                 </div>
+                <div  class="msg"><p><p></div>
             </header>
 
             <form id="form">
@@ -39,25 +40,13 @@
                 <p id="item-label" class="label-item">item</p>
                 <p id="quant-label" class="label-item">quant</p>
                 <p id="unit-label" class="label-item">unit</p>
-                <p id="price-label" class="label-item">price (ron)</p>
+                <p id="price-label" class="label-item">price (eur)</p>
                 <p id="delete-label" class="label-item">delete</p>
             </div>
 
-            <section id="cart-items">
-                <!-- <div id="row" class="cart-row">
-                    <button class="btn check cart-column"><i class="fas fa-check"></i></button>
-                    <p class="item list-item cart-column"></p>
-                    <p class="quant-select cart-column"></p>
-                    <p class="unit-select cart-column"></p>
-                    <input class="price cart-column" type="number" min="0">
-                    <button class="btn btn-danger cart-column"><i class="fas fa-trash "></i></button>
-                </div> -->
-            </section>
-
-            <div id="total-div">
-                <strong id ="total-title">Total:</strong>
-                <span id ="total-value"></span>
-            </div>
+            <section id="cart-items"></section>
         </div>  
+
+        <script src="main.js"></script>  
     </body>
 </html>
