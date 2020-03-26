@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/all.css">
+        <title>ShoppingList</title>
+    </head>
+    
+    <body>
+        <div class="container">
+            <header id="main-header" >
+                <div id="title">
+                    <h1 >My Shopping List</h1>
+                    <i class="hide-on-small fas fa-shopping-cart fa-2x"></i>
+                </div>
+                <div>
+                    <input type="text" id="filter-input" placeholder="Search for your items..">
+                    <i class="fas fa-search"></i>
+                </div>
+            </header>
+
+            <form id="form">
+                <div id="item">
+                    <input id="add-input" type="text" placeholder="e.g. apples.." maxlength="18" autofocus>
+                    <input id="quant" type="number" min="0">
+                    <select id="unit">
+                        <option value=""></option>
+                        <option value="kg">kg</option>
+                    </select>
+                </div>
+                <button type="submit" id="add-btn" class="btn">Add to your list</button>
+            </form>
+
+            <div class="labels">
+                <p id="check-label" class="label-item">check</p>
+                <p id="item-label" class="label-item">item</p>
+                <p id="quant-label" class="label-item">quant</p>
+                <p id="unit-label" class="label-item">unit</p>
+                <p id="price-label" class="label-item">price (ron)</p>
+                <p id="delete-label" class="label-item">delete</p>
+            </div>
+
+            <section id="cart-items">
+                <!-- <div id="row" class="cart-row">
+                    <button class="btn check cart-column"><i class="fas fa-check"></i></button>
+                    <p class="item list-item cart-column"></p>
+                    <p class="quant-select cart-column"></p>
+                    <p class="unit-select cart-column"></p>
+                    <input class="price cart-column" type="number" min="0">
+                    <button class="btn btn-danger cart-column"><i class="fas fa-trash "></i></button>
+                </div> -->
+            </section>
+
+            <div id="total-div">
+                <strong id ="total-title">Total:</strong>
+                <span id ="total-value"></span>
+            </div>
+        </div>  
+    </body>
+</html>
