@@ -1,2 +1,2 @@
 # Shopping - List
-HTML CSS & JS
+HTML CSS and JS (add, remove, check, filter, calculator)
