@@ -52,13 +52,42 @@ function addItem(e){
             // Event delegetion for delete button   
             if(e.target.parentElement.classList.contains('btn-danger')){
                 e.target.parentElement.parentElement.remove();
+                updateCartTotal();
             };
         });
+        
+        cartRow.getElementsByClassName('price')[0].addEventListener('change', updateCartTotal);
+
         clearInputs();
     };
 };
 
+function updateCartTotal(){
+    let total = 0;
+    let cartRows = document.getElementsByClassName('cart-row');
+    for(i=0; i<cartRows.length; i++){
+        let cartRow = cartRows[i];
+        let priceElement = cartRow.getElementsByClassName('price')[0];
+        let price = Number(priceElement.value);
+        price === 0;
+        if(isNaN(price) || price <= 0){
+            price = 0;
+            priceElement.style.background = '#fff';
+        }else{
+            price = price;
+            priceElement.style.background = '#f4f4f4';
+        };
+        total = total + price;
+    };
+    total = Math.round(total * 100) / 100; 
+    document.getElementById('total-value').innerText = `${total} eur`;
 
+    if(total != 0){
+        totalElement.classList.add('show-total');
+    }else{
+        totalElement.classList.remove('show-total');
+    };
+};
 
 function filterItems(e){ 
     let filterText = e.target.value.toLowerCase();
