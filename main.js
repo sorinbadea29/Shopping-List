@@ -1,5 +1,6 @@
 const form = document.getElementById('form');
 const addInput = document.getElementById('add-input');
+const labels = document.querySelector('.labels');
 const quantInput = document.getElementById('quant');
 const unitInput = document.getElementById('unit');
 const totalElement = document.getElementById('total-div');
@@ -9,13 +10,13 @@ const cartItems = document.getElementById('cart-items');
 document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', addToList);
     filter.addEventListener('keyup', ui.filterItems);
-})
+});
 
 function Item(addInput, quantInput, unitInput){
     this.addInput = addInput;
     this.quantInput = quantInput;
     this.unitInput = unitInput;
-}
+};
 let item = new Item;
 
 function Ui(){};
@@ -33,22 +34,29 @@ Ui.prototype.createItem = function(item){
     <button class="btn btn-danger"><i class="fas fa-trash "></i></button>`;
     row.innerHTML = rowContent;
     cartItems.append(row);
-}
+
+    if(cartItems !== ''){
+        labels.classList.add('show-flex');
+    }else{
+        labels.classList.remove('show-flex');
+    };
+};
 
 Ui.prototype.setMessage = function(nameOfClass, message, time){
     let msg = document.querySelector('.msg');
     msg.classList.add(nameOfClass);
     msg.innerText = message;
     setTimeout(() => msg.classList.remove(nameOfClass), time);   
-}
+};
 
 Ui.prototype.checkItem = function(target){
     target.parentElement.parentElement.classList.toggle('toggleCheck');
-}
+};
 
 Ui.prototype.deletItem = function(target){
     target.parentElement.parentElement.remove();
-}
+    labels.classList.remove('show-flex');
+};
 
 Ui.prototype.updateCartTotal = function(total){
     total = 0;
@@ -70,18 +78,17 @@ Ui.prototype.updateCartTotal = function(total){
     document.getElementById('total-value').innerText = `${total} eur`;
 
     if(total != 0){
-        totalElement.classList.add('show-total');
+        totalElement.classList.add('show');
     }else{
-        totalElement.classList.remove('show-total');
+        totalElement.classList.remove('show');
     };
-
 };
 
 Ui.prototype.clearInputs = function(){
     addInput.value = '';
     quantInput.value = '';
     unitInput.value = '';
-}
+};
 
 Ui.prototype.filterItems = function(e){
     let filterText = e.target.value.toLowerCase();
@@ -94,7 +101,7 @@ Ui.prototype.filterItems = function(e){
             item.parentElement.style.display = 'none';
         };
     });
-}
+};
 
 
 function addToList(e){
@@ -108,7 +115,7 @@ function addToList(e){
             if(itemText === addInput.value){
                 ui.setMessage('red', 'This item is already added to the list', 3000);
                 return;
-            }
+            };
         };
         item = new Item(addInput, quantInput, unitInput);
         ui.createItem(item);
@@ -117,8 +124,8 @@ function addToList(e){
         addInput.focus();
         let prices = document.querySelectorAll('.price')
         prices.forEach(price => price.addEventListener('change', ui.updateCartTotal));
-    }  
-}    
+    };
+};    
 
 cartItems.addEventListener('click', e => {
     if(e.target.parentElement.classList.contains('check')){
