@@ -116,6 +116,7 @@ function addToList(e){
             let itemText = items[i].innerText;
             if(itemText === addInput.value){
                 ui.setMessage('red', 'This item is already added to the list', 3000);
+                addInput.focus();
                 return;
             };
         };
