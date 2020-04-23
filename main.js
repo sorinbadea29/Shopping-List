@@ -55,7 +55,9 @@ Ui.prototype.checkItem = function(target){
 
 Ui.prototype.deletItem = function(target){
     target.parentElement.parentElement.remove();
-    labels.classList.remove('show-flex');
+    if(cartItems.textContent === ''){
+        labels.classList.remove('show-flex');
+    };
 };
 
 Ui.prototype.updateCartTotal = function(total){
